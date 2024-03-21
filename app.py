@@ -47,6 +47,15 @@ def criarGalaxia():
 
     else:
         return render_template('cadastrar.html')
+
+@app.route('/deletar/<int:id>', methods=['GET', 'POST'])
+
+#Exclusão
+def deletarGalaxia(id):
+    if request.method == 'POST':
+        if id in galaxias:
+            del galaxias[id]
+    return redirect(url_for('home'))
     
 def listar_galaxias():
     return galaxias
